@@ -10,7 +10,7 @@ class Group(models.Model):
     slug = models.SlugField(blank=True,
                             null=False,
                             unique=True)
-    
+
     def __str__(self):
         return self.title
 
@@ -23,7 +23,7 @@ class Post(models.Model):
                               blank=True,
                               null=True,
                               related_name='posts'
-                               )
+                              )
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='posts'
