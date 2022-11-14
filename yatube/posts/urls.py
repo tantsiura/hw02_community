@@ -1,10 +1,7 @@
-from django.urls import path
-
-from . import views
-
-app_name = "posts"
+from django.contrib import admin
+from django.urls import include, path
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("group/<slug:slug>/", views.group_posts, name="group_list"),
-]
+    path('', include('posts.urls', namespace='index')),
+    path('group/<slug:slug>/', include('posts.urls', namespace='posts')),
+    path('admin/', admin.site.urls), ]
