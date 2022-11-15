@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 User = get_user_model()
+QUANTITY_POSTS = 10
 
 
 class Group(models.Model):
@@ -28,3 +29,6 @@ class Post(models.Model):
                                on_delete=models.CASCADE,
                                related_name='posts'
                                )
+
+    class Meta:
+        ordering = [('-pub_date')[:QUANTITY_POSTS]]

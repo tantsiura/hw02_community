@@ -1,22 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for post in posts %}
-<p>
-  Группа: {{ group.title }}
-</p>
-<article>
-  <ul>
-    <li>
-      Автор: {{ post.author.get_full_name }}
-    </li>
-    <li>
-      Дата публикации: {{ post.pub_date|date:"d E Y" }}
-    </li>
-  </ul>      
+  {% for post in posts %}
   <p>
-    {{ post.text }}
+    Группа: {{ group.title }}
   </p>
-<article>
-{% if not forloop.last %}<hr>{% endif %}
-{% endfor %}
+  <article>
+    {% include 'includes/content.html' %}
+  <article>
+  {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %}
 {% endblock %}
